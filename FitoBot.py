@@ -4,7 +4,7 @@ import telebot
 bot = telebot.TeleBot('1460887912:AAHe1KqAdkPCeQ7t_L0Ds4nsDxNCJxBuDqI')
 @bot.message_handler(commands=['start'])
 def start_message(message):
-    bot.send_message(message.from_user.id, 'Привет,Босс, Чем могу помочь? /start')
+    bot.send_message(message.from_user.id, 'Привет, Босс, Чем могу помочь? /start')
 @bot.message_handler(commands=['help'])
 def help_message(message):
     bot.send_message(message.from_user.id,
@@ -13,10 +13,10 @@ def help_message(message):
 @bot.message_handler(content_types=['text'])
 def send_text(message):
     if "привет" in message.text.lower():
-        bot.send_message(message.from_user.id,'Назови пароль,амиго')
+        bot.send_message(message.from_user.id,'Назови пароль, амиго')
 
     if message.text=="Ты сейчас огребешь":
-     bot.send_message(message.from_user.id,'Прости,босс')
+     bot.send_message(message.from_user.id,'Прости, Босс')
 
 
 
