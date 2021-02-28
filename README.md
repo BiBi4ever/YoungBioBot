@@ -15,5 +15,5 @@ python
 Авторы:
 @IrASergeeva
 @DMalkov61
-@
+@julia-novikova
 @
