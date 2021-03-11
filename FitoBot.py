@@ -1,3 +1,5 @@
+import urllib.request as urllib2
+import random
 import types
 import math
 import telebot
