@@ -3,7 +3,10 @@ import random
 import types
 import math
 import telebot
-bot = telebot.TeleBot('1460887912:AAHe1KqAdkPCeQ7t_L0Ds4nsDxNCJxBuDqI')
+TOKEN = None
+with open("token.txt") as f:
+    TOKEN = f.read().strip()
+bot = telebot.TeleBot(TOKEN)
 @bot.message_handler(commands=['start'])
 def handle_start(message):
     user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
