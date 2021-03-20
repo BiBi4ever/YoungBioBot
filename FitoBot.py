@@ -27,35 +27,25 @@ def send_text(message):
     if message.text=="Ты сейчас огребешь":
      bot.send_message(message.from_user.id,'Прости, Босс')
 
+import telebot
+from bs4 import BeautifulSoup
+import requests
 
+#Новостная функция
+@bot.message_handler(content_types = ['text'])
+def handle(message):
+	URL = 'https://nplus1.ru/rubric/biology'
+	HEADERS = {
+		'User-Agent' : 'Mozilla / 5.0 (Windows NT 6.1) AppleWebKit / 537.36 (KHTML, например Gecko) Chrome / 89.0.4389.90 Safari / 537.36'
+	}
 
-import types
-import math
+	response = requests.get(URL, headers = HEADERS)
+	soup = BeautifulSoup(response.content, 'html.parser')
+	texts = soup.findAll('a', 'caption')
 
-с = 0;
-msolution = 0;
+	for i in range(len(texts[:-12]), -1, -1):
+		txt = str(i + 1) + ') ' + texts[i].text
+		#вызов гиперссылки
+        bot.send_message(message.chat.id, '<a href="{}">{}</a>'.format(texts[i]['href'], txt), parse_mode = 'html')
 
-@bot.message_handler(content_types=['text'])
-def start(message):
-    if message.text == 'conc':
-        bot.send_message(message.from_user.id, "Я посчитаю процентную концентрацию твоего раствора.");
-        bot.register_next_step_handler(message, get_msolution);
-    else:
-        bot.send_message(message.from_user.id, 'Напиши /conc');
-
-def get_msolution(message):
-    global msolution;
-    msolution = int(message.text)
-    bot.send_message(message.from_user.id, 'Введите нужный объем, мл');
-    bot.register_next_step_handler(message, get_c);
-
-def get_c(message):
-    global c;
-    bot.send_message('Введите итоговую процентную концентрацию, %');
-    while c == 0:
-        try:
-            c = int(message.text)
-        except Exception:
-            bot.send_message(message.from_user.id, 'Введите без символа %');
-    bot.send_message(message.from_user.id, 'Масса вещества' + str((c * msolution)/ 100) + 'гр')
 bot.polling()
