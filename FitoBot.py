@@ -20,7 +20,7 @@ def handle_text (message):
         directory = 'D:\Telega\Music'
         all_files_in_directory = os.listdir(directory)
         random_file = random.choice(all_files_in_directory)
-        aud = open(directory + '/' +random_file, 'rb')
+        aud = open(directory + '/' + random_file, 'rb')
         bot.send_chat_action(message.from_user.id, 'upload_audio')
         bot.send_audio(message.from_user.id, aud)
         aud.close()
