@@ -3,6 +3,7 @@ import random
 import types
 import math
 import telebot
+import os
 
 TOKEN = os.environ.get('TOKEN')
 bot = telebot.TeleBot(TOKEN)
