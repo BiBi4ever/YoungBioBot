@@ -17,13 +17,20 @@ def handle_start(message):
 @bot.message_handler(content_types=['text']) #Вставим музычку
 def handle_text (message):
     if message.text == 'Музяо в лабу':
-        directory = 'BiBi4ever/YoungBioBot/Music'
-        all_files_in_directory = os.listdir(directory)
-        random_file = random.choice(all_files_in_directory)
-        audio = open(directory + '/' + random_file, 'rb')
-        bot.send_chat_action(message.from_user.id, 'upload_audio')
-        bot.send_audio(message.from_user.id, audio)
-        aud.close()
+	abspath = os.path.abspath(__file__)
+        dirname = os.path.dirname(abspath)
+        os.chdir(dirname)
+        path = 'Music'
+        memedirectory = os.listdir(path)
+        file = random.choice(memedirectory)
+        doc = open( path + '/' + file, 'rb')
+        #directory = 'BiBi4ever/YoungBioBot/Music'
+        #all_files_in_directory = os.listdir(directory)
+        #random_file = random.choice(all_files_in_directory)
+        #audio = open(directory + '/' + random_file, 'rb')
+        #bot.send_chat_action(message.from_user.id, 'upload_audio')
+        #bot.send_audio(message.from_user.id, audio)
+        #aud.close()
 @bot.message_handler(commands=['help'])
 def help_message(message):
     bot.send_message(message.from_user.id,
