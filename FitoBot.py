@@ -5,6 +5,8 @@ import math
 import telebot
 import os
 import json
+from bs4 import BeautifulSoup
+import requests
 
 TOKEN = os.environ.get('TOKEN')
 bot = telebot.TeleBot(TOKEN)
@@ -47,24 +49,23 @@ def send_text(message):
     if message.text=="Ты сейчас огребешь":
      bot.send_message(message.from_user.id,'Прости, Босс')
 
-import telebot
 from bs4 import BeautifulSoup
 import requests
 
 #Новостная функция
-@bot.message_handler(content_types = ['text'])
-def handle(message):
-	URL = 'https://nplus1.ru/rubric/biology'
-	HEADERS = {
+#@bot.message_handler(content_types = ['text'])
+#def handle(message):
+	#URL = 'https://nplus1.ru/rubric/biology'
+	#HEADERS = {
 		'User-Agent' : 'Mozilla / 5.0 (Windows NT 6.1) AppleWebKit / 537.36 (KHTML, например Gecko) Chrome / 89.0.4389.90 Safari / 537.36'
 	}
 
-	response = requests.get(URL, headers = HEADERS)
-	soup = BeautifulSoup(response.content, 'html.parser')
-	texts = soup.findAll('a', 'caption')
+	#response = requests.get(URL, headers = HEADERS)
+	#soup = BeautifulSoup(response.content, 'html.parser')
+	#texts = soup.findAll('a', 'caption')
 
-	for i in range(len(texts[:-12]), -1, -1):
-		txt = str(i + 1) + ') ' + texts[i].text
+	#for i in range(len(texts[:-12]), -1, -1):
+		#txt = str(i + 1) + ') ' + texts[i].text
 		#вызов гиперссылки
-                bot.send_message(message.chat.id, '<a href="{}">{}</a>'.format(texts[i]['href'], txt), parse_mode = 'html')
+                #bot.send_message(message.chat.id, '<a href="{}">{}</a>'.format(texts[i]['href'], txt), parse_mode = 'html')
 bot.polling()
