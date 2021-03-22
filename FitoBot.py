@@ -16,8 +16,8 @@ def handle_start(message):
     user_markup.row('Кошкодевочка', 'Мемчик')
     user_markup.row('Музяо в лабу', 'Мотивирующая цитата')
     bot.send_message(message.from_user.id, 'Привет,Босс, Чем могу помочь? /start', reply_markup=user_markup)
-@bot.message_handler(content_types=['text']) #Вставим музычку
-def handle_text (message):
+@bot.message_handler(content_types=['audio']) #Вставим музычку
+def handle_audio (message):
     if message.text == 'Музяо в лабу':
 	abspath = os.path.abspath(__file__)
         dirname = os.path.dirname(abspath)
