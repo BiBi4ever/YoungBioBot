@@ -66,5 +66,5 @@ def handle(message):
 	for i in range(len(texts[:-12]), -1, -1):
 		txt = str(i + 1) + ') ' + texts[i].text
 		#вызов гиперссылки
-        bot.send_message(message.chat.id, '<a href="{}">{}</a>'.format(texts[i]['href'], txt), parse_mode = 'html')
+                bot.send_message(message.chat.id, '<a href="{}">{}</a>'.format(texts[i]['href'], txt), parse_mode = 'html')
 bot.polling()
