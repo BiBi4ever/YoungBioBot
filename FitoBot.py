@@ -27,7 +27,7 @@ def handle_audio (message):
         file = random.choice(musicdirectory)
         audio = open( path + '/' + file, 'rb')
         bot.send_audio(message.from_user.id, audio)
-        bot.register_next_step_handler(message, after_push)
+	bot.send_audio(message.from_user.id, "FILEID")
         #directory = 'D://Telega/Music'
         #all_files_in_directory = os.listdir(directory)
         #random_file = random.choice(all_files_in_directory)
