@@ -13,7 +13,6 @@ bot = telebot.TeleBot(TOKEN)
 def handle_start(message):
     user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
     user_markup.row('/start', "/stop")
-    user_markup.row('Кошкодевочка', 'Мемчик')
     user_markup.row('Музяо в лабу', 'Мотивирующая цитата')
     bot.send_message(message.from_user.id, 'Привет,Босс, Чем могу помочь? /start', reply_markup=user_markup)
 @bot.message_handler(content_types=['text']) #Вставим музычку
