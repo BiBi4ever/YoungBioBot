@@ -3,6 +3,7 @@ import math
 import random
 import urllib.request as urllib2
 import telebot
+import os
 
 TOKEN = os.environ.get('TOKEN')
 bot = telebot.TeleBot(TOKEN)
