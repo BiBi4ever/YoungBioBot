@@ -4,6 +4,8 @@ import random
 import urllib.request as urllib2
 import telebot
 import os
+import types
+import math
 
 TOKEN = os.environ.get('TOKEN')
 bot = telebot.TeleBot(TOKEN)
@@ -15,20 +17,6 @@ def handle_start(message):
     user_markup.row('Кошкодевочка', 'Мемчик')
     user_markup.row('Музяо в лабу', 'Мотивирующая цитата')
     bot.send_message(message.from_user.id, 'Привет,Босс, Чем могу помочь? /start', reply_markup=user_markup)
-@bot.message_handler(content_types=['text']) #Вставим музычку
-def handle_text (message):
-    if message.text == 'Музяо в лабу':
-        directory = 'D:/Telega/Music'
-        all_files_in_directory = os.listdir(directory)
-        random_file = random.choice(all_files_in_directory)
-        aud = open(directory + '/' +random_file, 'rb')
-        bot.send_chat_action(message.from_user.id, 'upload_audio')
-        bot.send_audio(message.from_user.id, aud)
-        aud.close()
-
-
-
-
 
 @bot.message_handler(commands=['help'])
 def help_message(message):
@@ -42,11 +30,33 @@ def send_text(message):
 
     if message.text=="Ты сейчас огребешь":
      bot.send_message(message.from_user.id,'Прости,босс')
+ #Команды, которые работают не на 100%
+@bot.message_handler(content_types=['text']) #Вставим музычку
+def handle_text (message):
+    if message.text == 'Музяо в лабу':
+        abspath = os.path.abspath(__file__)
+        dirname = os.path.dirname(abspath)
+        os.chdir(dirname)
+        path = 'Music'
+        musicpath = os.listdir(path)
+        file = random.choice(musicpath)
+        audio = open( path + '/' + file, 'rb')
+        caption = 'Хорошей работы!'
+        #send_random_audio
+        bot.send_audio(message.from_user.id, audio)
+        bot.register_next_step_handler(message, after_push)
+        #directory = 'D:/Telega/Music'
+        #all_files_in_directory = os.listdir(directory)
+        #random_file = random.choice(all_files_in_directory)
+        #aud = open(directory + '/' +random_file, 'rb')
+        #bot.send_chat_action(message.from_user.id, 'upload_audio')
+        #bot.send_audio(message.from_user.id, aud)
+        #aud.close()
 
 
 
-import types
-import math
+
+
 
 с = 0;
 msolution = 0;
