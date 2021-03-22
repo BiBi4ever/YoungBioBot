@@ -3,7 +3,7 @@ import math
 import random
 import urllib.request as urllib2
 import telebot
-bot = telebot.TeleBot('1460887912:AAHe1KqAdkPCeQ7t_L0Ds4nsDxNCJxBuDqI')@bot.message_handler(commands=['start'])
+bot = telebot.TeleBot('1460887912:AAF35lGmnMPoo8UpHEXKMBeq-4DwCZ4nKBI')@bot.message_handler(commands=['start'])
 def handle_start(message):
     user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
     user_markup.row('/start', "/stop")
