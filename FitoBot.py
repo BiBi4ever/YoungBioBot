@@ -48,7 +48,4 @@ def send_text(message):
 
     if message.text=="Ты сейчас огребешь":
      bot.send_message(message.from_user.id,'Прости, Босс')
-
-from bs4 import BeautifulSoup
-import requests
 bot.polling()
