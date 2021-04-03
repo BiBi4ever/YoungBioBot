@@ -6,6 +6,7 @@ import telebot
 import os
 import types
 import math
+import logging
 
 TOKEN = os.environ.get('TOKEN')
 bot = telebot.TeleBot(TOKEN)
@@ -34,6 +35,7 @@ def send_text(message):
 @bot.message_handler(content_types=['text']) #Вставим музычку
 def handle_text (message):
     if message.text == 'Музяо в лабу':
+        logging.info("Сейчас спою!")
         abspath = os.path.abspath(__file__)
         dirname = os.path.dirname(abspath)
         os.chdir(dirname)
