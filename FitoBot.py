@@ -20,7 +20,7 @@ def handle_start(message):
     bot.send_message(message.from_user.id, 'Привет,Босс, Чем могу помочь? /start', reply_markup=user_markup)
     bot.register_next_step_handler(message, after_push)
     
-def features(message)
+def features(message):
     return_row = types.ReplyKeyboardMarkup(True, True)
     return_row.row('Назад')
     if message.text == 'Назад':
