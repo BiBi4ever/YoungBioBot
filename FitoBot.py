@@ -18,6 +18,7 @@ def handle_start(message):
     user_markup.row('Кошкодевочка', 'Мемчик')
     user_markup.row('Музяо в лабу', 'Таймер')
     bot.send_message(message.from_user.id, 'Привет,Босс, Чем могу помочь? /start', reply_markup=user_markup)
+    bot.register_next_step_handler(message, after_push)
     
  def features(message)
       return_row = types.ReplyKeyboardMarkup(True, True)
