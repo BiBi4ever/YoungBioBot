@@ -28,7 +28,7 @@ def handle_start(message):
             return
       if message.text == 'Таймер'
       timer_menu = types.ReplyKeyboardMarkup(True, True)
-      Timer_menu.row('/set_timer', '/unset_timer')
+      timer_menu.row('/set_timer', '/unset_timer')
 
 @bot.message_handler(commands=['help'])
 def help_message(message):
