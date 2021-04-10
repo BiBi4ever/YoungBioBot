@@ -26,7 +26,7 @@ def features(message):
     if message.text == 'Назад':
           after_push(message)
           return
-    if message.text == 'Таймер'
+    if message.text == 'Таймер':
     timer_menu = types.ReplyKeyboardMarkup(True, True)
     timer_menu.row('/set_timer', '/unset_timer')
 
