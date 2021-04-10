@@ -18,6 +18,16 @@ def handle_start(message):
     user_markup.row('Кошкодевочка', 'Мемчик')
     user_markup.row('Музяо в лабу', 'Таймер')
     bot.send_message(message.from_user.id, 'Привет,Босс, Чем могу помочь? /start', reply_markup=user_markup)
+    
+ def features(message)
+      return_row = types.ReplyKeyboardMarkup(True, True)
+      return_row.row('Назад')
+      if message.text == 'Назад':
+            after_push(message)
+            return
+      if message.text == 'Таймер'
+      timer_menu = types.ReplyKeyboardMarkup(True, True)
+      Timer_menu.row('/set_timer', '/unset_timer')
 
 @bot.message_handler(commands=['help'])
 def help_message(message):
