@@ -1,4 +1,3 @@
-pip install --upgrade google-api-python-client
 from __future__ import print_function
 import httplib2
 
@@ -10,6 +9,7 @@ import schedule
 
 from apiclient import discovery
 from oauth2client.service_account import ServiceAccountCredentials
+
 import types
 import math
 import random
