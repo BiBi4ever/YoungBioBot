@@ -34,7 +34,7 @@ def handle_start(message):
         bot.register_next_step_handler(message, timer_menu)
 
 #Впилим календарь
-    def job():
+def job():
     print("I'm working...")
     bot = telepot.Bot(config.TOKEN)
 
