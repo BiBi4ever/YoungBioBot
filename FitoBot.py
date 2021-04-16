@@ -7,7 +7,7 @@ import os
 import types
 import math
 import logging
-from oauth2client.service_account import ServiceAccountCredentials
+from models import *
 
 TOKEN = os.environ.get('TOKEN')
 bot = telebot.TeleBot(TOKEN)
@@ -19,7 +19,7 @@ def handle_start(message):
     user_markup.row('Кошкодевочка', 'Мемчик')
     user_markup.row('Музыка', 'Таймер')
     bot.send_message(message.from_user.id, 'Привет,Босс, Чем могу помочь? /start', reply_markup=user_markup)
-    bot.register_next_step_handler(message, after_push)
+    bot.register_next_step_handler(msg, user_enter)
     
 def features(message):
     return_row = types.ReplyKeyboardMarkup(True, True)
