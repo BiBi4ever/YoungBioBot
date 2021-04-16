@@ -1,4 +1,4 @@
-import google-api-python-client
+pip install --upgrade google-api-python-client
 from __future__ import print_function
 import httplib2
 
