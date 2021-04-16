@@ -7,7 +7,6 @@ import os
 import types
 import math
 import logging
-from models import *
 
 TOKEN = os.environ.get('TOKEN')
 bot = telebot.TeleBot(TOKEN)
