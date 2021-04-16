@@ -42,7 +42,8 @@ def send_text(message):
 
     if message.text=="Ты сейчас огребешь":
      bot.send_message(message.from_user.id,'Прости,босс')
- #Команды, которые работают не на 100%
+    
+#Команды, которые работают не на 100%
 @bot.message_handler(content_types=['text']) #Вставим музычку
 def handle_text (message):
     if message.text == 'Музяо в лабу':
@@ -65,8 +66,20 @@ def handle_text (message):
         #bot.send_chat_action(message.from_user.id, 'upload_audio')
         #bot.send_audio(message.from_user.id, aud)
         #aud.close()
-
-
+        
+#Страшное дело с картинками
+@bot.message_handler(regexp="Мем")
+def send_mem(message):
+    abspath = os.path.abspath(__file__)
+    dirname = os.path.dirname(abspath)
+    os.chdir(dirname)
+    path = 'Mem'
+    Mempath = os.listdir(path)
+    file = random.choice(Mempath)
+    Mem = open( path + '/' + file, 'rb')
+    #file_id =  #сейчас подумаю над путем 
+    bot.send_photo(message.chat.id, Mem) #Отправляем шутку
+    #Оно тоже по любасу не работает, но я могу только плакать, простите
 
 
 
