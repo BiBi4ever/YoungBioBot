@@ -1,3 +1,5 @@
+import google-api-python-client
+import schedule
 import types
 import math
 import random
