@@ -18,7 +18,8 @@ def handle_start(message):
     user_markup.row('Кошкодевочка', 'Мемчик')
     user_markup.row('Музыка', 'Таймер')
     bot.send_message(message.from_user.id, 'Привет,Босс, Чем могу помочь? /start', reply_markup=user_markup)
-    bot.register_next_step_handler(message, user_enter)
+    if message.text == 'Таймер':
+    bot.register_next_step_handler(message, timer_menu)
     
 def features(message):
     return_row = types.ReplyKeyboardMarkup(True, True)
