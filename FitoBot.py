@@ -1,5 +1,4 @@
 from __future__ import print_function
-pip3 install httplib2 --upgrade
 import httplib2
 
 import datetime
