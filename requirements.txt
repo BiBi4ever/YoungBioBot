@@ -21,3 +21,4 @@ telepot
 schedule
 apiclient
 oauth2client
+discovery
