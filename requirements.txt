@@ -16,8 +16,6 @@ six==1.10.0
 virtualenv==15.1.0
 virtualenv-clone==0.3.0
 -e git+https://github.com/httplib2/httplib2.git#egg=httplib2
-datetime
-time
 config
 telepot
 schedule
