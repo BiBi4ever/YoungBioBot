@@ -155,30 +155,34 @@ def send_mem(message):
 
 
 
-с = 0;
-msolution = 0;
+c = 0
+msolution = 0
 
-@bot.message_handler(content_types=['text'])
-def start(message):
-    if message.text == 'conc':
-        bot.send_message(message.from_user.id, "Я посчитаю процентную концентрацию твоего раствора.");
-        bot.register_next_step_handler(message, get_msolution);
+def start_conc(message):
+    if message.text == '/conc':
+        bot.send_message(message.from_user.id, "Я могу посчитать, сколько сухого вещества (в граммах) потребуется тебе для приготовления раствора с определенной процентной концентрацией.  "
+                                               "Введи нужный объем раствора, мл.  "
+                                               "Пожалуйста, используй точку в качестве разделителя знаков, я маленький бот и еще не знаю как по-другому :)")
+
+        bot.register_next_step_handler(message, get_msolution)
     else:
-        bot.send_message(message.from_user.id, 'Напиши /conc');
+        bot.send_message(message.from_user.id, 'Напиши /conc')
 
 def get_msolution(message):
-    global msolution;
-    msolution = int(message.text)
-    bot.send_message(message.from_user.id, 'Введите нужный объем, мл');
-    bot.register_next_step_handler(message, get_c);
+    global msolution
+    msolution = float(message.text)
+    print(msolution)
+    bot.send_message(message.from_user.id, 'Введи процентную концентрацию раствора, которая тебе нужна, %')
+    bot.register_next_step_handler(message, get_c)
 
 def get_c(message):
-    global c;
-    bot.send_message('Введите итоговую процентную концентрацию, %');
+    global c
     while c == 0:
         try:
-            c = int(message.text)
+            c = float(message.text)
         except Exception:
-            bot.send_message(message.from_user.id, 'Введите без символа %');
-    bot.send_message(message.from_user.id, 'Масса вещества' + str((c * msolution)/ 100) + 'гр')
+            bot.send_message(message.from_user.id, 'Введи без символа %')
+            break
+
+    bot.send_message(message.from_user.id, 'Итого, тебе нужно ' + str((float(c) * float(msolution))/ 100) + ' гр')
 bot.polling()
