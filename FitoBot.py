@@ -143,8 +143,8 @@ def after_push(message):
         dirname2 = os.path.dirname(abspath2)
         os.chdir(dirname2)
         path2 = 'Mem'
-        Mem_path = os.listdir(path2)
-        file2 = random.choice(Mem_path)
+        mempath = os.listdir(path2)
+        file2 = random.choice(mempath)
         mem = open(path2 + '/' + file2, 'rb')
         bot.send_photo(message.chat.id, mem)
         bot.register_next_step_handler(message, handle_start)
@@ -153,8 +153,8 @@ def after_push(message):
         dirname3 = os.path.dirname(abspath3)
         os.chdir(dirname3)
         path3 = 'Catgirl'
-        Cat_path = os.listdir(path3)
-        file3 = random.choice(Cat_path)
+        catpath = os.listdir(path3)
+        file3 = random.choice(catpath)
         photo = open(path3 + '/' + file3, 'rb')
         caption3 = 'А теперь за работу!'
         bot.send_photo(message.chat.id, photo, caption3)
