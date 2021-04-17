@@ -29,6 +29,7 @@ def handle_start(message):
     user_markup.row('/start', "/stop")
     user_markup.row('Кошкодевочка', 'Мемчик')
     user_markup.row('Музыка', 'Напоминания')
+    bot.register_next_step_handler(message, after_push)
     bot.send_message(message.from_user.id, 'Привет,Босс, Чем могу помочь? /start', reply_markup=user_markup)
     if message.text == 'Таймер':
         bot.register_next_step_handler(message, timer_menu)
@@ -115,21 +116,21 @@ def send_text(message):
      bot.send_message(message.from_user.id,'Прости,босс')
     
 #Команды, которые работают не на 100%
-@bot.message_handler(content_types=['text']) #Вставим музычку
-def handle_text (message):
-    if message.text == 'Музяо в лабу':
-        logging.info("Сейчас спою!")
-        abspath = os.path.abspath(__file__)
-        dirname = os.path.dirname(abspath)
-        os.chdir(dirname)
-        path = 'Music'
-        musicpath = os.listdir(path)
-        file = random.choice(musicpath)
-        audio = open( path + '/' + file, 'rb')
-        caption = 'Хорошей работы!'
-        #send_random_audio
-        bot.send_audio(message.from_user.id, audio)
-        bot.register_next_step_handler(message, after_push)
+def after_push(message):
+    if message.text == 'Музыка':
+        bot.send_message(message.from_user.id, "Сейчас спою!")
+        #logging.info("Сейчас спою!")
+        abspath1 = os.path.abspath(__file__)
+        dirname1 = os.path.dirname(abspath1)
+        os.chdir(dirname1)
+        path1 = 'Music'
+        music_path = os.listdir(path1)
+        file1 = random.choice(music_path)
+        audio = open(path1 + '/' + file1, 'rb')
+        caption1 = 'Хорошей работы!'
+        # send_random_audio
+        bot.send_audio(message.from_user.id, audio, caption1)
+        bot.register_next_step_handler(message, handle_start)
         #directory = 'D:/Telega/Music'
         #all_files_in_directory = os.listdir(directory)
         #random_file = random.choice(all_files_in_directory)
@@ -137,19 +138,40 @@ def handle_text (message):
         #bot.send_chat_action(message.from_user.id, 'upload_audio')
         #bot.send_audio(message.from_user.id, aud)
         #aud.close()
+    elif message.text == 'Мемчик':
+        abspath2 = os.path.abspath(__file__)
+        dirname2 = os.path.dirname(abspath2)
+        os.chdir(dirname2)
+        path2 = 'Mem'
+        Mem_path = os.listdir(path2)
+        file2 = random.choice(Mem_path)
+        mem = open(path2 + '/' + file2, 'rb')
+        bot.send_photo(message.chat.id, mem)
+        bot.register_next_step_handler(message, handle_start)
+    elif message.text == 'Кошкодевочка':
+        abspath3 = os.path.abspath(__file__)
+        dirname3 = os.path.dirname(abspath3)
+        os.chdir(dirname3)
+        path3 = 'Catgirl'
+        Cat_path = os.listdir(path3)
+        file3 = random.choice(Cat_path)
+        photo = open(path3 + '/' + file3, 'rb')
+        caption3 = 'А теперь за работу!'
+        bot.send_photo(message.chat.id, photo, caption3)
+        bot.register_next_step_handler(message, handle_start)   
         
 #Страшное дело с картинками
-@bot.message_handler(regexp="Мем")
-def send_mem(message):
-    abspath = os.path.abspath(__file__)
-    dirname = os.path.dirname(abspath)
-    os.chdir(dirname)
-    path = 'Mem'
-    Mempath = os.listdir(path)
-    file = random.choice(Mempath)
-    Mem = open( path + '/' + file, 'rb')
+#@bot.message_handler(regexp="Мем")
+#def send_mem(message):
+    #abspath = os.path.abspath(__file__)
+    #dirname = os.path.dirname(abspath)
+    #os.chdir(dirname)
+    #path = 'Mem'
+    #Mempath = os.listdir(path)
+    #file = random.choice(Mempath)
+    #Mem = open( path + '/' + file, 'rb')
     #file_id =  #сейчас подумаю над путем 
-    bot.send_photo(message.chat.id, Mem) #Отправляем шутку
+    #bot.send_photo(message.chat.id, Mem) #Отправляем шутку
     #Оно тоже по любасу не работает, но я могу только плакать, простите
 
 
