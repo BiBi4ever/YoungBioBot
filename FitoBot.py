@@ -109,11 +109,15 @@ def help_message(message):
 
 @bot.message_handler(content_types=['text'])
 def send_text(message):
-    if "привет" in message.text.lower():
+    if "привет" in message.text.lower() or "hello" in message.text.lower() or "hi" in message.text.lower():
         bot.send_message(message.from_user.id,'Назови пароль,амиго')
 
-    if message.text=="Ты сейчас огребешь":
+    elif message.text == "Ты сейчас огребешь":
      bot.send_message(message.from_user.id,'Прости,босс')
+
+    else:
+        bot.send_message(message.from_user.id, " Я перестал тебя понимать, босс :( Обратись к команде /start или /help ")
+        bot.register_next_step_handler(message, handle_start)
     
 #Команды, которые работают не на 100%
 def after_push(message):
