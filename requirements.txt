@@ -20,4 +20,4 @@ config
 telepot
 schedule
 apiclient
-oauth2client.service_account
+oauth2client
