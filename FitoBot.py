@@ -111,10 +111,8 @@ def help_message(message):
 def send_text(message):
     if "привет" in message.text.lower() or "hello" in message.text.lower() or "hi" in message.text.lower():
         bot.send_message(message.from_user.id,'Назови пароль,амиго')
-
     elif message.text == "Ты сейчас огребешь":
-     bot.send_message(message.from_user.id,'Прости,босс')
-
+        bot.send_message(message.from_user.id,'Прости,босс')
     else:
         bot.send_message(message.from_user.id, " Я перестал тебя понимать, босс :( Обратись к команде /start или /help ")
         bot.register_next_step_handler(message, handle_start)
