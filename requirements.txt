@@ -22,4 +22,5 @@ schedule
 apiclient
 oauth2client
 discovery
-
+gflags
+uritemplate
