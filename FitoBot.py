@@ -10,7 +10,7 @@ import httplib2
 
 from oauth2client.service_account import ServiceAccountCredentials
 import apiclient
-import discovery
+from apiclient import apiclient.discovery
 #from apiclient import discovery
 
 
