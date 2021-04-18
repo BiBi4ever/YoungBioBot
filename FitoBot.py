@@ -8,7 +8,7 @@ import telepot
 import schedule
 
 import apiclient 
-import discovery
+#import discovery
 from oauth2client.service_account import ServiceAccountCredentials
 
 import types
