@@ -8,8 +8,9 @@ import telepot
 import schedule
 import httplib2
 
-import apiclient 
-from apiclient import discovery
+import apiclient
+from googleapiclient import discovery
+#from apiclient import discovery
 from oauth2client.service_account import ServiceAccountCredentials
 
 import types
