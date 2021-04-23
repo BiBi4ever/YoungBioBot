@@ -109,7 +109,7 @@ def features(message):
 @bot.message_handler(commands=['help'])
 def help_message(message):
     bot.send_message(message.from_user.id,
-                     text="To bring up a summary of biological functions, write concentrations. To see a secret, ask. Authors - a group of guys 4 bibi")
+                     text="To bring up a summary of biological functions, write /concentrations. To see a secret, ask. Authors - a group of guys 4 bibi")
 
 @bot.message_handler(content_types=['text'])
 def send_text(message):
@@ -121,11 +121,9 @@ def send_text(message):
         bot.send_message(message.from_user.id, " Я перестал тебя понимать, босс :( Обратись к команде /start или /help ")
         bot.register_next_step_handler(message, handle_start)
     
-#Команды, которые работают не на 100%
 def after_push(message):
     if message.text == 'Музыка':
         bot.send_message(message.from_user.id, "Сейчас спою!")
-        #logging.info("Сейчас спою!")
         abspath1 = os.path.abspath(__file__)
         dirname1 = os.path.dirname(abspath1)
         os.chdir(dirname1)
@@ -134,52 +132,29 @@ def after_push(message):
         file1 = random.choice(music_path)
         audio = open(path1 + '/' + file1, 'rb')
         caption1 = 'Хорошей работы!'
-        # send_random_audio
         bot.send_audio(message.from_user.id, audio, caption1)
         bot.register_next_step_handler(message, handle_start)
-        #directory = 'D:/Telega/Music'
-        #all_files_in_directory = os.listdir(directory)
-        #random_file = random.choice(all_files_in_directory)
-        #aud = open(directory + '/' +random_file, 'rb')
-        #bot.send_chat_action(message.from_user.id, 'upload_audio')
-        #bot.send_audio(message.from_user.id, aud)
-        #aud.close()
     elif message.text == 'Мемчик':
         abspath2 = os.path.abspath(__file__)
         dirname2 = os.path.dirname(abspath2)
         os.chdir(dirname2)
         path2 = 'Mem'
-        mempath = os.listdir(path2)
-        file2 = random.choice(mempath)
+        Mem_path = os.listdir(path2)
+        file2 = random.choice(Mem_path)
         mem = open(path2 + '/' + file2, 'rb')
-        bot.send_photo(message.chat.id, mem)
+        bot.send_photo(message.from_user.id, mem)
         bot.register_next_step_handler(message, handle_start)
     elif message.text == 'Кошкодевочка':
         abspath3 = os.path.abspath(__file__)
         dirname3 = os.path.dirname(abspath3)
         os.chdir(dirname3)
         path3 = 'Catgirl'
-        catpath = os.listdir(path3)
-        file3 = random.choice(catpath)
+        Cat_path = os.listdir(path3)
+        file3 = random.choice(Cat_path)
         photo = open(path3 + '/' + file3, 'rb')
         caption3 = 'А теперь за работу!'
-        bot.send_photo(message.chat.id, photo, caption3)
-        bot.register_next_step_handler(message, handle_start)   
-        
-#Страшное дело с картинками
-#@bot.message_handler(regexp="Мем")
-#def send_mem(message):
-    #abspath = os.path.abspath(__file__)
-    #dirname = os.path.dirname(abspath)
-    #os.chdir(dirname)
-    #path = 'Mem'
-    #Mempath = os.listdir(path)
-    #file = random.choice(Mempath)
-    #Mem = open( path + '/' + file, 'rb')
-    #file_id =  #сейчас подумаю над путем 
-    #bot.send_photo(message.chat.id, Mem) #Отправляем шутку
-    #Оно тоже по любасу не работает, но я могу только плакать, простите
-
+        bot.send_photo(message.from_user.id, photo, caption3)
+        bot.register_next_step_handler(message, handle_start)
 
 
 
@@ -187,14 +162,12 @@ c = 0
 msolution = 0
 
 def start_conc(message):
-    if message.text == '/conc':
+    if message.text == '/concentration':
         bot.send_message(message.from_user.id, "Я могу посчитать, сколько сухого вещества (в граммах) потребуется тебе для приготовления раствора с определенной процентной концентрацией.  "
                                                "Введи нужный объем раствора, мл.  "
                                                "Пожалуйста, используй точку в качестве разделителя знаков, я маленький бот и еще не знаю как по-другому :)")
 
         bot.register_next_step_handler(message, get_msolution)
-    else:
-        bot.send_message(message.from_user.id, 'Напиши /conc')
 
 def get_msolution(message):
     global msolution
