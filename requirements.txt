@@ -22,3 +22,4 @@ schedule
 apiclient
 oauth2client
 discovery
+google-api-python-client
