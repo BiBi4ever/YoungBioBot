@@ -54,7 +54,7 @@ def job():
 
         print('Берем 100 событий')
         eventsResult = service.events().list(
-            calendarId='kamaelboi221@gmail.com', timeMin=now, timeMax=now_1day, maxResults=100, singleEvents=True,
+            calendarId='n9iq3vhii945efp0lk99uda7d8@group.calendar.google.com', timeMin=now, timeMax=now_1day, maxResults=100, singleEvents=True,
             orderBy='startTime').execute()
         events = eventsResult.get('items', [])
 
